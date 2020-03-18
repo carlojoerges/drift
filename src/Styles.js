@@ -55,6 +55,12 @@ export const PinIcon = () =>
     <path d="M6.49999 0C3.17657 0 0.166656 2.69404 0.166656 6.01825C0.166656 9.34167 2.91295 13.3095 6.49999 19C10.087 13.3095 12.8333 9.34167 12.8333 6.01825C12.8333 2.69404 9.8242 0 6.49999 0ZM6.49999 8.70833C5.1882 8.70833 4.12499 7.64512 4.12499 6.33333C4.12499 5.02154 5.1882 3.95833 6.49999 3.95833C7.81178 3.95833 8.87499 5.02154 8.87499 6.33333C8.87499 7.64512 7.81178 8.70833 6.49999 8.70833Z" fill="white" fillOpacity="0.8"/>
     </svg>
 
+export const SubmitArrow = () =>
+    <svg width="33" height="40" viewBox="0 0 33 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 20H0" stroke="#F2EBCF" strokeWidth="2"/>
+    <path d="M26 26L32 20L26 14" stroke="#F2EBCF" strokeWidth="2" strokeLinejoin="round"/>
+    </svg>
+
 
 export const Box = styled(animated.div)`
     position: absolute;

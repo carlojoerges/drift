@@ -1,6 +1,6 @@
 import React, {useState, useRef, useContext} from 'react';
 import { StoreContext, StoreProvider } from './Store'
-import { ScreenWrap,BottomBar,CloseButton, PinIcon } from './Styles'
+import { ScreenWrap,BottomBar,CloseButton, PinIcon, SubmitArrow } from './Styles'
 import styled from "styled-components";
 import Downshift from 'downshift'
 
@@ -52,10 +52,12 @@ export const CityInput = styled.div`
   border-top: 1px solid #1F231E;
   border-bottom: 1px solid #1F231E;
   display: flex;
+  align-items: center;
   padding: 28px 12vw;
   margin: 0 0 24px 0;
 `
 const CityInputField = styled.input`
+  flex-grow: 1;
   background: transparent;
   border: 0;
   outline: 0;
@@ -105,6 +107,7 @@ export const City = () => {
                 <CityInput>
                     <PinIcon/>
                     <CityInputField placeholder="Enter a place" {...getInputProps()} />
+                    <SubmitArrow/>
                 </CityInput>
                 <Suggestions {...getMenuProps()}>
                 {isOpen
