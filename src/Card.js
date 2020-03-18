@@ -3,23 +3,8 @@ import React, {useState, useRef} from 'react';
 import { motion, useMotionValue } from "framer-motion";
 import { useSpring, animated } from "react-spring"
 import styled from "styled-components";
+import { Box } from './Styles'
 
-const Box = styled(animated.div)`
-    display: flex;  
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: white;
-    border-radius: 12px;
-    width: 200px;
-    height: 200px;
-    padding: 36px;
-    font-size: 24px;
-    text-transform: uppercase;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.18);
-`;
 
 const addVec = (a,b) => ({x:a.x+b.x,y:a.y+b.y});
 const subVec = (a,b) => ({x:a.x-b.x,y:a.y-b.y});
@@ -27,7 +12,7 @@ const multVec = (a,b) => ({x:a.x*b,y:a.y*b});
 const lengthVec = (a) => Math.sqrt(a.x*a.x+a.y*a.y);
 
 
-export const Card = ({prompt,initialAngle=0, onMove=()=>{}, snap={x:0,y:0,r:0}}) => {
+export const Card = ({outerRef, prompt,initialAngle=0, onMove=()=>{}, onUp=()=>{}, snap={x:0,y:0,r:0}}) => {
   const weight = 1;
   const inertia = 500;
   const breaking = 1.15;
@@ -39,11 +24,14 @@ export const Card = ({prompt,initialAngle=0, onMove=()=>{}, snap={x:0,y:0,r:0}})
   const m = useRef({x:-1,y:-1})
   const mlast = useRef({x:0,y:0})
   const [p, setP] = useState({x:0,y:0,r:initialAngle});
-  const outerRef = useRef();
+  
 
   const style = useSpring({
     config: { tension: 500 },
-    transform: `translate(${p.x}px, ${p.y}px) rotate(${p.r}deg)`
+    from: {
+        transform: `translate(0px, 0px) rotate(0deg) scale(0.9)`    
+    },
+    transform: `translate(${p.x}px, ${p.y}px) rotate(${p.r}deg) scale(1.0)`
   });
 
   const handleMouseUp = () => {
@@ -53,6 +41,7 @@ export const Card = ({prompt,initialAngle=0, onMove=()=>{}, snap={x:0,y:0,r:0}})
     pos.current = snapPoint.current
     
     setP(pos.current)
+    onUp(pos.current)
   };
 
   const handleMouseDown = (e) => {
@@ -115,25 +104,21 @@ export const Card = ({prompt,initialAngle=0, onMove=()=>{}, snap={x:0,y:0,r:0}})
     onMove(pos.current)
   };
   return (
-    <div
-        style={{
-            position: 'absolute',
-        }} 
-        ref={outerRef}>
-        <Box
-            // whileHover={{
-            //   scale: 1.08
-            // }}
-            onMouseDown={handleMouseDown}
-            // style={{
-            //   x: p.x,
-            //   y: p.y,
-            //   rotate: p.r
-            // }}
-            style={style}
-        >{prompt.t}
-        </Box>
-    </div>
+    
+    <Box
+        // whileHover={{
+        //   scale: 1.08
+        // }}
+        onMouseDown={handleMouseDown}
+        // style={{
+        //   x: p.x,
+        //   y: p.y,
+        //   rotate: p.r
+        // }}
+        style={style}
+    >{prompt.t}
+    </Box>
+
   )
 }
 
