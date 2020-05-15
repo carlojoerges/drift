@@ -15,7 +15,9 @@ export const ContentArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12vh 24vh;
+  padding: 12vh 12vh;
+  color: white;
+  font-size: 4vw;
 `
 
 export const BottomBar = styled.div`
@@ -73,6 +75,7 @@ export const Box = styled(animated.div)`
     justify-content: center;
     text-align: center;
     background: white;
+    color: black;
     border-radius: 12px;
     width: 200px;
     height: 200px;

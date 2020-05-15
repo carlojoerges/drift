@@ -20,11 +20,11 @@ export const App = observer(() => {
 })
 
 
-const Home = () => {
+const Home = observer(() => {
   const store = useContext(StoreContext)
   return (
     <ScreenWrap>
-      <ContentArea></ContentArea>
+      <ContentArea>{store.story}</ContentArea>
       <BottomBar>
         <Button
           whileHover={{ scale: 1.1 }}
@@ -34,7 +34,7 @@ const Home = () => {
       </BottomBar>
     </ScreenWrap>
   )
-}
+})
 
 
 
@@ -50,7 +50,7 @@ const Drift = observer(() => {
   return (
     <ScreenWrap>
       <BottomBar>
-        <CloseButton onTap={()=> {}}/>
+        <CloseButton onTap={()=> { store.returnHome() }}/>
       </BottomBar>
       <ContentArea>
         <div
@@ -63,9 +63,18 @@ const Drift = observer(() => {
               key={p.id}
               initialAngle={randAngleForString(p.t,p.id)}
               prompt={p}
-              onMove={(d)=>{if (d.y>100) p.add = true; else p.add = false;}}
+              onMove={(d)=>{
+                if (d.y>100) {
+                  p.add = true;
+                  p.added = new Date();
+                } else if (Math.abs(d.x) + Math.abs(d.y) < 100) {} else p.add = false;
+              }}
               onUp={()=>{store.saveDrift()}}
-              snap={{x:0, y:p.add?400:0, r:randAngleForString(p.t,p.add?4:p.id)}}
+              snap={{
+                x:0, 
+                y:p.added ? 400 : p.add == undefined ? 0 : -400, 
+                r:randAngleForString(p.t,p.add?4:p.id)
+              }}
             />
           ))}
         </div>

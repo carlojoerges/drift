@@ -2,15 +2,22 @@ import React, { useReducer, useEffect } from "react";
 import { observer, useLocalStore } from 'mobx-react'
 import { toJS, reaction } from 'mobx'
 import { driftsRef } from './firebase';
+import moment from 'moment-mini';
+import {Prompts} from './Prompts'
+import {story} from './Story';
 
-let prompts = [
-    {t:'Follow the direction of the smell', r:Math.random()},
-    {t:'Walk against the wind', r:Math.random()},
-    {t:'Towards the next pretzel bakery', r:Math.random()},
-    {t:'Halfway home', r:Math.random()},
-    {t:'Follow a group', r:Math.random()},
-    {t:'Walk towards a tree', r:Math.random()},
-];
+
+// let prompts = [
+//     {t:'Follow the direction of the smell', r:Math.random()},
+//     {t:'Walk against the wind', r:Math.random()},
+//     {t:'Towards the next pretzel bakery', r:Math.random()},
+//     {t:'Halfway home', r:Math.random()},
+//     {t:'Follow a group', r:Math.random()},
+//     {t:'Walk towards a tree', r:Math.random()},
+// ];
+
+let prompts = Prompts.map((p) => ({...p, ...{r:Math.random()}}))
+
 const sortPrompts = () => {
     prompts.sort((a,b) => {
         return a.r - b.r;
@@ -36,11 +43,12 @@ function StoreProvider(props) {
           if (store.currentDrift) {
             let n = 0;
             store.currentDrift.prompts.map((p)=>{
-                if (!p.add) n++;
+                if (p.add == undefined && !p.added) n++;
             })
             return n;
           } else return 2;
       },
+      story: null,
       drifts: [],
       addPrompt(p) {
         if (store.currentDrift) {
@@ -56,27 +64,39 @@ function StoreProvider(props) {
           store.addPrompt(pickRandomPrompt())
           store.addPrompt(pickRandomPrompt())
       },
+      startWalking(city) {
+        if (store.currentDrift) {
+            store.currentDrift.c = city;
+            store.mode = 2;
+        }
+      },
+      returnHome() {
+        store.mode = 0;
+      },
       saveDrift() {
         if (store.currentDrift) {
             let n = {
                 prompts:[],
+                c: store.currentDrift.c,
                 id: store.currentDrift.id
             };
             store.currentDrift.prompts.map((p)=>{
                 if (p.add) {
                     let ps = toJS(p)
+                    delete ps.add
+                    delete ps.id
+                    delete ps.r
+
                     console.log(ps)
-                    ps.added = new Date();
+                    // ps.added = new Date();
                     n.prompts.push(ps);
                 }
             })
             console.log(n)
             if (n.prompts.length) {
-                console.log(n.id)
-                console.log(!n.id)
                 if (!n.id) n.id = store.currentDrift.id = driftsRef.push().key;
                 driftsRef.update({
-                    [n.id]: {prompts:n.prompts}
+                    [n.id]: {prompts:n.prompts, c:n.c}
                 });
             }
         }
@@ -92,7 +112,14 @@ function StoreProvider(props) {
   window.store = store;
 
   driftsRef.on('value', (snapshot) => {
-    console.log(snapshot.val());
+    const snap = snapshot.val();
+    let ps = [];
+    if (snap) Object.entries(snap).forEach(([key, value]) => {
+        value.prompts.forEach((p)=>{
+            ps.push({c:value.c, d:moment(p.added), p:p.p, t:p.t})
+        })
+    });
+    store.story = story(ps);
   });
 
   store.tick();
@@ -111,5 +138,6 @@ function StoreProvider(props) {
       </StoreContext.Provider>
   );
 }
+
 
 export { StoreContext, StoreProvider };

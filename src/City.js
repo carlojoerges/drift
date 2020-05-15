@@ -88,13 +88,15 @@ export const City = () => {
     return (
       <ScreenWrap>
         <BottomBar>
-            <CloseButton onTap={()=> {}}/>
+            <CloseButton onTap={()=> { store.returnHome() }}/>
         </BottomBar>
         <Title>Where are you walking?</Title>
         <SubTitle>This will be used anonymously</SubTitle>
         <Downshift
             onChange={selection => {
-                
+                if(selection.value) {
+                  store.startWalking(selection.value)
+                }
             }}
             itemToString={item => (item ? item.value : '')}
             defaultIsOpen={true}

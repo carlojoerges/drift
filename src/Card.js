@@ -11,6 +11,27 @@ const subVec = (a,b) => ({x:a.x-b.x,y:a.y-b.y});
 const multVec = (a,b) => ({x:a.x*b,y:a.y*b});
 const lengthVec = (a) => Math.sqrt(a.x*a.x+a.y*a.y);
 
+function touchHandler(event)
+{
+    var touches = event.changedTouches,
+        first = touches[0],
+        type = "";
+    switch(event.type)
+    {
+        case "touchstart": type = "mousedown"; break;
+        case "touchmove":  type = "mousemove"; break;        
+        case "touchend":   type = "mouseup";   break;
+        default:           return;
+    }
+    var simulatedEvent = document.createEvent("MouseEvent");
+    simulatedEvent.initMouseEvent(type, true, true, window, 1, 
+                                  first.screenX, first.screenY, 
+                                  first.clientX, first.clientY, false, 
+                                  false, false, false, 0/*left*/, null);
+
+    first.target.dispatchEvent(simulatedEvent);
+    // event.preventDefault();
+}
 
 export const Card = ({outerRef, prompt,initialAngle=0, onMove=()=>{}, onUp=()=>{}, snap={x:0,y:0,r:0}}) => {
   const weight = 1;
@@ -36,7 +57,9 @@ export const Card = ({outerRef, prompt,initialAngle=0, onMove=()=>{}, onUp=()=>{
 
   const handleMouseUp = () => {
     window.removeEventListener('mouseup', handleMouseUp);
+    window.removeEventListener('touchend', touchHandler);
     window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('touchmove', touchHandler);
     m.current = {x:-1,y:-1}
     pos.current = snapPoint.current
     
@@ -46,8 +69,10 @@ export const Card = ({outerRef, prompt,initialAngle=0, onMove=()=>{}, onUp=()=>{
 
   const handleMouseDown = (e) => {
     window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('touchend', touchHandler);
     window.addEventListener('mousemove', handleMouseMove);
-    e.preventDefault();
+    window.addEventListener('touchmove', touchHandler);
+    // e.preventDefault();
   };
   const handleMouseMove = (e) => {
     let first = m.current.x == -1 ? true : false;
@@ -110,6 +135,7 @@ export const Card = ({outerRef, prompt,initialAngle=0, onMove=()=>{}, onUp=()=>{
         //   scale: 1.08
         // }}
         onMouseDown={handleMouseDown}
+        onTouchStart={touchHandler}
         // style={{
         //   x: p.x,
         //   y: p.y,
@@ -148,10 +174,13 @@ export class Draggable extends React.Component {
   
   componentWillUnmount() {
     window.removeEventListener('mouseup', this.handleMouseUp);
+    window.removeEventListener('touchend', touchHandler);
   }
   handleMouseDown = (e) => {
     window.addEventListener('mouseup', this.handleMouseUp);
+    window.addEventListener('touchend', touchHandler);
     window.addEventListener('mousemove', this.handleMouseMove);
+    window.addEventListener('touchend', touchHandler);
     this.m.x = e.nativeEvent.clientX; this.m.y = e.nativeEvent.clientY;
     this.m0 = {x:0,y:0};
     this.first = true;
@@ -207,7 +236,9 @@ export class Draggable extends React.Component {
   };
   handleMouseUp = () => {
     window.removeEventListener('mouseup', this.handleMouseUp);
+    window.removeEventListener('touchend', touchHandler);
     window.removeEventListener('mousemove', this.handleMouseMove);
+    window.removeEventListener('touchmove', touchHandler);
     this.dragging = false;
     this.setState({
       x: 300,
