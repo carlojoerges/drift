@@ -5,7 +5,7 @@ import { StoreContext, StoreProvider } from './Store'
 import { City } from './City'
 import { Card } from './Card'
 import { observer } from 'mobx-react'
-import { ScreenWrap, ContentArea, BottomBar, TextButton, Button, CloseButton } from './Styles'
+import { ScreenWrap, ContentArea, BottomBar, TextButton, Button, CloseButton, CardArea } from './Styles'
 import {
   BrowserRouter as Router,
   Switch,
@@ -79,11 +79,11 @@ const Home = observer(() => {
     let c = t.charCodeAt(i % t.length) % t.length % rand.length
     return rand[c]
   }
-  let cover = {t:'Wander and wonder wherever you are', cover: true}
+  let cover = {t:'Wander and wonder wherever you are.', cover: true}
   return (
     <ScreenWrap>
       {store.started ? <WanderMenu/> : <HomeMenu/>}
-      <ContentArea>
+      <CardArea>
         <div
           style={{position: 'absolute'}} 
           ref={outerRef}
@@ -126,7 +126,8 @@ const Home = observer(() => {
             }}
           />
         </div>
-      </ContentArea>
+      </CardArea>
+      <div style={{"text-align": 'center'}}  ><p> Swipe down to start a guided wander.</p></div>
     </ScreenWrap>
   )
 })

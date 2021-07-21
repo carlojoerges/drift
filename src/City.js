@@ -18,27 +18,24 @@ const baseItems = [
   ];
 
 export const Title = styled.h1`
-  font-family: 'Bodoni';
   font-weight: 100;
-  font-size: 10vw;
+  font-size: 40px;
   line-height: 100%;
   color: white;
-  padding: 0 12vw;
-  margin: 0 0 24px 0;
+  padding: 0px 12vw;
+  margin: 0px 0px 24px;
 `
 
 export const SubTitle = styled.h5`
-  font-family: 'Bodoni';
   font-weight: 400;
-  font-size: 2vw;
+  font-size: 16px;
   color: white;
-  padding: 0 12vw;
-  margin: 0 0 24px 0;
+  padding: 0px 12vw;
+  margin: 0px 0px 24px;
 `
 
 export const MetaTitle = styled.h6`
   text-transform: uppercase;
-  font-family: 'Bodoni';
   font-weight: 400;
   letter-spacing: 25%;
   font-size: 12px;
@@ -56,16 +53,18 @@ export const CityInput = styled.div`
   align-items: center;
   padding: 28px 12vw;
   margin: 0 0 24px 0;
+  font-family:'Ortica-Light' !important;
 `
 const CityInputField = styled.input`
+  -webkit-box-flex: 1;
   flex-grow: 1;
   background: transparent;
-  border: 0;
-  outline: 0;
+  border: 0px;
+  outline: 0px;
   margin-left: 12px;
   color: white;
-  font-family: 'Bodoni';
-  font-size: 2vw;
+  font-size: 18px;
+  font-family:'Ortica-Light' !important;
 `
 
 const Suggestions = styled.ul`
@@ -74,7 +73,6 @@ const Suggestions = styled.ul`
   padding: 0;
 `
 const Suggestion = styled.li`
-  font-family: 'Bodoni';
   font-size: 18px;
   color: white;
   padding: 16px 12vw;
@@ -107,8 +105,8 @@ export const City = () => {
     return (
       <ScreenWrap>
         <Menu/>
-        <Title>Where are you walking?</Title>
-        <SubTitle>This will be used anonymously</SubTitle>
+        <Title>Where did you walk today?</Title>
+        <SubTitle>This will be used for a story of your walk.</SubTitle>
         <Downshift
             onChange={selection => {
                 if(selection.value) {

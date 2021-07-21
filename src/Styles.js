@@ -9,15 +9,34 @@ export const ScreenWrap = styled.div`
   flex-direction: column;
 `;
 
-export const ContentArea = styled.div`
+export const CardArea = styled.div`
   display: flex;  
   flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 12vh 12vh;
-  color: white;
-  font-size: 4vw;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 38px;
+  color: #F5F3E9;
+`
+
+export const ContentArea = styled.div`
+  display: flex;  
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left:20px;
+  width:80%;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 38px;
+  color: #F5F3E9;
+
 `
 
 export const BottomBar = styled.div`
@@ -80,22 +99,23 @@ export const SubmitArrow = () =>
 
 
 export const Box = styled(animated.div)`
-    position: absolute;
-    left: -136px;
-    top: -136px;
-    display: flex;  
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     background: ${props => props.cover ? '#70856A' : 'white'};
     color: ${props => props.cover ? 'white' : 'black'};
-    border-radius: 12px;
-    width: 200px;
-    height: 200px;
+    position: absolute;
+    left: -150px;
+    top: -200px;
+    display: flex;
+    flex: 1 1 0%;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 2px;
+    width: 250px;
+    height: 250px;
     padding: 36px;
-    font-size: 24px;
-    text-transform: uppercase;
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.18);
+    font-size: 28px;
+    box-shadow: rgb(0 0 0 / 60%) 0px 0px 1px 1px;
 `;
