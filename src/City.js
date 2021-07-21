@@ -1,6 +1,7 @@
 import React, {useState, useRef, useContext} from 'react';
+import { observer } from 'mobx-react'
 import { StoreContext, StoreProvider } from './Store'
-import { ScreenWrap,BottomBar,CloseButton, PinIcon, SubmitArrow } from './Styles'
+import { ScreenWrap,BottomBar,TextButton,CloseButton, PinIcon, SubmitArrow } from './Styles'
 import styled from "styled-components";
 import Downshift from 'downshift'
 
@@ -82,14 +83,21 @@ const Suggestion = styled.li`
   }
 `
 
+const Menu = observer(() => {
+  const store = useContext(StoreContext)
+  return (
+  <BottomBar>
+    <TextButton onTap={()=> { store.startDrift() }} stretch>Cancel</TextButton>
+  
+  </BottomBar>
+  )
+})
 
 export const City = () => {
     const store = useContext(StoreContext)
     return (
       <ScreenWrap>
-        <BottomBar>
-            <CloseButton onTap={()=> { store.returnHome() }}/>
-        </BottomBar>
+        <Menu/>
         <Title>Where are you walking?</Title>
         <SubTitle>This will be used anonymously</SubTitle>
         <Downshift

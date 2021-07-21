@@ -156,7 +156,7 @@ const story = (prs) => {
         so: moment().startOf('year').valueOf(),
     }
 
-    console.log(prs)
+    // console.log(prs)
     let s = ''
     let block;
     block = blockJustNow(pickFor(justNow,prs)).filter(Boolean).join(' ')

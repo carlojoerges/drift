@@ -24,7 +24,22 @@ export const BottomBar = styled.div`
   display: flex;
   align-items: center;
   padding: 12vw 12vw;
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 5px;
+  }
 `
+export const TextButton = styled(motion.div)`
+  color: white;
+  font-size: 24px;
+  margin: 5px;
+  flex: ${props => props.stretch ? '1' : '0'};
+`
+
+
+
 export const Button = styled(motion.div)`
   flex: 1;
   text-align: center;
@@ -74,8 +89,8 @@ export const Box = styled(animated.div)`
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: white;
-    color: black;
+    background: ${props => props.cover ? '#70856A' : 'white'};
+    color: ${props => props.cover ? 'white' : 'black'};
     border-radius: 12px;
     width: 200px;
     height: 200px;

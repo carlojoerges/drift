@@ -36,6 +36,7 @@ const StoreContext = React.createContext();
 function StoreProvider(props) {
   const store = useLocalStore(() => ({
       mode: 0,
+      started: 0,
       get currentDrift() {
           return store.drifts.length ? store.drifts[store.drifts.length-1] : null
       },
@@ -48,6 +49,16 @@ function StoreProvider(props) {
             return n;
           } else return 2;
       },
+      get currentDriftStory() {
+        if (store.currentDrift) {
+            let ps = [];
+            store.currentDrift.prompts.map((p)=>{
+                if (p.add) ps.push({c:store.currentDrift.c || "", d:moment(p.added), p:p.p, t:p.t})
+            })
+            console.log(ps)
+            return story(ps)
+        } else return null;
+      },
       story: null,
       drifts: [],
       addPrompt(p) {
@@ -57,18 +68,20 @@ function StoreProvider(props) {
         }
       },
       startDrift() {
-          store.mode = 1;
+          store.started = 0;
+          store.mode = 0;
           store.drifts.push({
               prompts: []
           })
-          store.addPrompt(pickRandomPrompt())
-          store.addPrompt(pickRandomPrompt())
       },
       startWalking(city) {
         if (store.currentDrift) {
             store.currentDrift.c = city;
-            store.mode = 2;
+            store.mode = 3;
         }
+      },
+      pickCity() {
+        store.mode = 1;
       },
       returnHome() {
         store.mode = 0;
@@ -87,7 +100,6 @@ function StoreProvider(props) {
                     delete ps.id
                     delete ps.r
 
-                    console.log(ps)
                     // ps.added = new Date();
                     n.prompts.push(ps);
                 }
@@ -129,8 +141,13 @@ function StoreProvider(props) {
         store.addPrompt(pickRandomPrompt())
     }
   }
-
+  
   reaction(() => `${store.availablePrompts}`, addPrompts)
+
+  store.drifts.push({
+              prompts: []
+          })
+
 
   return (
       <StoreContext.Provider value={store}>
