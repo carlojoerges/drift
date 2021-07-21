@@ -32,18 +32,18 @@ function touchHandler(event)
     // event.preventDefault();
 }
 
-export const Card = ({outerRef, prompt,initialAngle=0, initialY=0, onMove=()=>{}, onUp=()=>{}, snap={x:0,y:0,r:0}}) => {
+export const Card = ({outerRef, prompt,initialAngle=0, initialY=0, initialZ=10, onMove=()=>{}, onUp=()=>{}, snap={x:0,y:0,r:0}}) => {
   const weight = 1;
   const inertia = 500;
   const breaking = 1.15;
   const snapPoint = useRef()
   snapPoint.current = snap
-  const pos = useRef({x:0,y:0,r:initialAngle})
+  const pos = useRef({x:0,y:0,r:initialAngle,z:initialZ})
   const v = useRef({x:0,y:0})
   const vr = useRef(0);
   const m = useRef({x:-1,y:-1})
   const mlast = useRef({x:0,y:0})
-  const [p, setP] = useState({x:0,y:initialY,r:initialAngle});
+  const [p, setP] = useState({x:0,y:initialY,r:initialAngle,z:initialZ});
   
 
   const style = useSpring({
@@ -51,7 +51,7 @@ export const Card = ({outerRef, prompt,initialAngle=0, initialY=0, onMove=()=>{}
     from: {
         transform: `translate(0px, 0px) rotate(0deg) scale(0.9)`    
     },
-    transform: `translate(${p.x}px, ${p.y}px) rotate(${p.r}deg) scale(1.0)`
+    transform: `translate(${p.x}px, ${p.y}px) rotate(${p.r}deg) scale(1.0)`,
   });
 
   const handleMouseUp = () => {
@@ -122,8 +122,10 @@ export const Card = ({outerRef, prompt,initialAngle=0, initialY=0, onMove=()=>{}
     pos.current = {
       x: l1.x-outerRect.width/2,
       y: l1.y-outerRect.height/2,
-      r: ang
+      r: ang,
+      z: 1000
     }
+    // console.log(prompt.added)
     setP(pos.current)
     onMove(pos.current)
   };
@@ -141,7 +143,7 @@ export const Card = ({outerRef, prompt,initialAngle=0, initialY=0, onMove=()=>{}
         //   y: p.y,
         //   rotate: p.r
         // }}
-        style={style}
+        style={{zIndex: p.z, ...style}}
     >{prompt.t}
     </Box>
 

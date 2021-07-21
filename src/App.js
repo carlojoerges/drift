@@ -104,7 +104,8 @@ const Home = observer(() => {
               snap={{
                 x:0, 
                 y:p.added ? 400 : p.add == undefined ? 0 : -800, 
-                r:randAngleForString(p.t,p.add?4:p.id)
+                r:randAngleForString(p.t,p.add?4:p.id),
+                z:p.added ? p.id+20 : 10
               }}
             />
           ))}
@@ -122,7 +123,8 @@ const Home = observer(() => {
             snap={{
               x:0, 
               y:store.started ? 400 : 0, 
-              r:0
+              r:0,
+              z: 10
             }}
           />
         </div>
