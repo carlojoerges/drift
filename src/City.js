@@ -5,7 +5,7 @@ import { ScreenWrap,BottomBar,TextButton,CloseButton, PinIcon, SubmitArrow } fro
 import styled from "styled-components";
 import Downshift from 'downshift'
 
-const items = [
+const baseItems = [
     {value: 'New York'},
     {value: 'San Francisco'},
     {value: 'Berlin'},
@@ -95,6 +95,15 @@ const Menu = observer(() => {
 
 export const City = () => {
     const store = useContext(StoreContext)
+    const [items,setItems] = useState(baseItems)
+    const searchInput = useRef(null);
+
+    React.useEffect(()=>{
+      // current property is refered to input element
+      searchInput.current.focus();
+   },[])
+ 
+
     return (
       <ScreenWrap>
         <Menu/>
@@ -103,6 +112,7 @@ export const City = () => {
         <Downshift
             onChange={selection => {
                 if(selection.value) {
+                  console.log(selection.value)
                   store.startWalking(selection.value)
                 }
             }}
@@ -111,12 +121,27 @@ export const City = () => {
 
         >
             {({
-                getInputProps,getItemProps,getLabelProps,getMenuProps,isOpen,inputValue,highlightedIndex,selectedItem,
+                getInputProps,setHighlightedIndex,getItemProps,getLabelProps,getMenuProps,isOpen,inputValue,highlightedIndex,selectedItem,
             }) => (
             <div>
                 <CityInput>
                     <PinIcon/>
-                    <CityInputField placeholder="Enter a place" {...getInputProps()} />
+                    <CityInputField placeholder="Enter a place" ref={searchInput}
+                    {...getInputProps({
+                      onKeyUp: event => {
+                        if (inputValue.trim().length > 0) {
+                          let i = inputValue.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+                          let found = false;
+                          baseItems.map((bi) => {
+                            found = found || bi.value == i;
+                          })
+                          if (found) setItems(baseItems); else setItems([{value:i},...baseItems]);
+                          setHighlightedIndex(0)
+                        } else {
+                          setItems(baseItems)
+                        }
+                      },
+                    })} />
                     <SubmitArrow/>
                 </CityInput>
                 <Suggestions {...getMenuProps()}>
