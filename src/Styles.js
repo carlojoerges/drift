@@ -23,6 +23,17 @@ export const CardArea = styled.div`
   color: #F5F3E9;
 `
 
+export const TextArea = styled.div`
+  padding-left:20px;
+  width:80%;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 38px;
+  color: #F5F3E9;
+  z-index:10;
+`
+
 export const ContentArea = styled.div`
   display: flex;  
   flex: 1;
@@ -36,27 +47,27 @@ export const ContentArea = styled.div`
   font-size: 29px;
   line-height: 38px;
   color: #F5F3E9;
-
+  z-index:10;
 `
 
 export const BottomBar = styled.div`
   display: flex;
   align-items: center;
-  padding: 12vw 12vw;
+  padding: 12px;
+  z-index: 5;
   a {
     color: white;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 16px;
     margin: 5px;
   }
 `
 export const TextButton = styled(motion.div)`
   color: white;
-  font-size: 24px;
+  font-size: 16px;
   margin: 5px;
   flex: ${props => props.stretch ? '1' : '0'};
 `
-
 
 
 export const Button = styled(motion.div)`
@@ -72,6 +83,25 @@ export const Button = styled(motion.div)`
   cursor: default;
 `
 
+export const TitleBox = styled.div`
+  background-color: #70856A;
+  width: 80px;
+  color: black;
+  padding: 12px;
+  margin-top: 25%;
+  z-index: 10;
+  border-radius: 1px;
+  margin-bottom:40px;
+`
+
+export const Circles = styled.div`
+position: fixed;
+left: 50%;
+width: 800px;
+margin-left: -400px;
+margin-top: -20px;
+z-index:1;
+`
 
 export const CloseButton = (props) => 
   <motion.div
@@ -99,11 +129,11 @@ export const SubmitArrow = () =>
 
 
 export const Box = styled(animated.div)`
-    background: ${props => props.cover ? '#70856A' : 'white'};
+    background: ${props => props.cover ? '#70856A' : '#F5F3E9'};
     color: ${props => props.cover ? 'white' : 'black'};
     position: absolute;
-    left: -150px;
-    top: -200px;
+    left: -140px;
+    top: -150px;
     display: flex;
     flex: 1 1 0%;
     flex-direction: column;
@@ -113,9 +143,10 @@ export const Box = styled(animated.div)`
     justify-content: center;
     text-align: center;
     border-radius: 2px;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     padding: 36px;
-    font-size: 28px;
+    font-size: 30px;
+    line-height:40px;
     box-shadow: rgb(0 0 0 / 60%) 0px 0px 1px 1px;
 `;

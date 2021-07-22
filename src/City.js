@@ -22,15 +22,16 @@ export const Title = styled.h1`
   font-size: 40px;
   line-height: 100%;
   color: white;
-  padding: 0px 12vw;
+  padding: 0px 40px;
   margin: 0px 0px 24px;
+  padding-top: 12vw;
 `
 
 export const SubTitle = styled.h5`
   font-weight: 400;
   font-size: 16px;
   color: white;
-  padding: 0px 12vw;
+  padding: 0px 40px;
   margin: 0px 0px 24px;
 `
 
@@ -51,7 +52,7 @@ export const CityInput = styled.div`
   border-bottom: 1px solid #1F231E;
   display: flex;
   align-items: center;
-  padding: 28px 12vw;
+  padding: 28px 40px;
   margin: 0 0 24px 0;
   font-family:'Ortica-Light' !important;
 `
