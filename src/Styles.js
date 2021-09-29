@@ -26,12 +26,14 @@ export const CardArea = styled.div`
 export const TextArea = styled.div`
   padding-left:20px;
   width:80%;
+  max-width:550px;
   font-style: normal;
   font-weight: 300;
   font-size: 29px;
   line-height: 38px;
   color: #F5F3E9;
   z-index:10;
+  padding-bottom:120px;
 `
 
 export const ContentArea = styled.div`
@@ -48,6 +50,12 @@ export const ContentArea = styled.div`
   line-height: 38px;
   color: #F5F3E9;
   z-index:10;
+`
+
+export const DesktopWarning = styled.div`
+@media only screen and (max-width: 700px) {
+  display:none;
+}
 `
 
 export const BottomBar = styled.div`
@@ -88,7 +96,7 @@ export const TitleBox = styled.div`
   width: 80px;
   color: black;
   padding: 12px;
-  margin-top: 25%;
+  margin-top: 150px;
   z-index: 10;
   border-radius: 1px;
   margin-bottom:40px;
@@ -101,6 +109,9 @@ width: 800px;
 margin-left: -400px;
 margin-top: -20px;
 z-index:1;
+@media only screen and (min-width: 768px) {
+  margin-top:12vh;
+}
 `
 
 export const CloseButton = (props) => 
@@ -148,5 +159,6 @@ export const Box = styled(animated.div)`
     padding: 36px;
     font-size: 30px;
     line-height:40px;
-    box-shadow: rgb(0 0 0 / 60%) 0px 0px 1px 1px;
+    border: 1px solid #0B0B0B;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 `;
