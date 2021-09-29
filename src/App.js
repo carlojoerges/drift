@@ -178,7 +178,7 @@ const Home = observer(() => {
         <path d="M754.3 434.307C719.189 584.845 536.316 671.057 345.642 626.584C154.968 582.112 29.1059 423.891 64.2169 273.354C99.3279 122.817 282.201 36.6049 472.875 81.0773C663.549 125.55 789.411 283.77 754.3 434.307Z" stroke="#70856A"/>
         </svg>
       </Circles>
-      <div style={{"text-align": 'center', "font-size":"14px","padding-bottom":"8px","opacity":".7"}}  ><p> Swipe down to start a guided wander.</p></div>
+      <div style={{"text-align": 'center', "font-size":"14px","padding-bottom":"24px","opacity":".7"}}  ><p> Swipe down to accept a prompt.</p></div>
     </ScreenWrap>
   )
 })
