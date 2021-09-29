@@ -4,7 +4,7 @@ import { toJS, reaction } from 'mobx'
 import { driftsRef } from './firebase';
 import moment from 'moment-mini';
 import {Prompts} from './Prompts'
-import {story} from './Story';
+import {personalStory, story} from './Story';
 
 
 // let prompts = [
@@ -57,6 +57,16 @@ function StoreProvider(props) {
             })
             console.log(ps)
             return story(ps)
+        } else return null;
+      },
+      get currentPersonalStory() {
+        if (store.currentDrift) {
+            let ps = [];
+            store.currentDrift.prompts.map((p)=>{
+                if (p.add) ps.push({c:store.currentDrift.c || "", d:moment(p.added), p:p.p, t:p.t})
+            })
+            console.log(ps)
+            return personalStory(ps)
         } else return null;
       },
       story: null,

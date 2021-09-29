@@ -132,7 +132,26 @@ const blockBefore = (prs) => {
     if (n && cities.length) return `Before that, ${n} people took purposeless walks across ${cities.length} cities.`; else return '';
 }
 
-// console.log(pickFor(thisWeek))
+const personalStory = (prs) => {
+    // on date in location, you first, second, last
+    let blocks = []
+    if (prs && prs.length) {
+        let first = prs[0]
+        blocks.push(`On ${moment(first.d).format('MMMM Qo')}`)
+        if (first.c) blocks.push(`in ${first.c}`)
+        blocks.push(`you`)
+        prs.map((p,i) => {
+            blocks.push(p.p + (
+                i < prs.length-2 
+                    ? ','
+                    : i == prs.length-1
+                        ? '.'
+                        : '')) 
+            if (i == prs.length-2) blocks.push('and')
+        })
+        return blocks.join(' ')
+    }
+}
 
 const story = (prs) => {
     const justNow = {
@@ -183,4 +202,4 @@ const story = (prs) => {
     return s;
 }
 
-export { story }
+export { story, personalStory }
