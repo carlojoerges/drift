@@ -53,7 +53,7 @@ function pickFor(timeframe, prompts) {
                 if (p.t.toLowerCase() == ps[0].t.toLowerCase()) {
                     p.pu++;
                 }
-                if (p.c.toLowerCase() == ps[0].c.toLowerCase()) {
+                if (p.c && ps[0].c && p.c.toLowerCase() == ps[0].c.toLowerCase()) {
                     p.cu++;
                 }
             })

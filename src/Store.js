@@ -55,7 +55,6 @@ function StoreProvider(props) {
             store.currentDrift.prompts.map((p)=>{
                 if (p.add) ps.push({c:store.currentDrift.c || "", d:moment(p.added), p:p.p, t:p.t})
             })
-            console.log(ps)
             return story(ps)
         } else return null;
       },
@@ -65,7 +64,6 @@ function StoreProvider(props) {
             store.currentDrift.prompts.map((p)=>{
                 if (p.add) ps.push({c:store.currentDrift.c || "", d:moment(p.added), p:p.p, t:p.t})
             })
-            console.log(ps)
             return personalStory(ps)
         } else return null;
       },
@@ -87,6 +85,7 @@ function StoreProvider(props) {
       startWalking(city) {
         if (store.currentDrift) {
             store.currentDrift.c = city;
+            store.saveDrift()
             store.mode = 3;
         }
       },
@@ -118,7 +117,7 @@ function StoreProvider(props) {
             if (n.prompts.length) {
                 if (!n.id) n.id = store.currentDrift.id = driftsRef.push().key;
                 driftsRef.update({
-                    [n.id]: {prompts:n.prompts, c:n.c}
+                    [n.id]: {prompts:n.prompts, c:n.c || null}
                 });
             }
         }
