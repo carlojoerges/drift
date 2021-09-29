@@ -51,7 +51,12 @@ const History = observer(() => {
     <ScreenWrap>
       <HomeMenu/>
       <TitleBox>History</TitleBox>
-      <TextArea>{store.story}</TextArea>
+      <TextArea>
+      Wander Prompts are a set of prompts for a slow, observational walk.<br/><br/>
+      They can guide you to get to know your own city more intimately. Or, just give you an excuse to walk outside.
+      </TextArea>
+      <TextArea>For example, {store.story}</TextArea>
+      <TextArea>Wander Prompts were created by H.Jaramillo and C.Joerges.</TextArea>
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M633.153 262.929C652.85 308.736 645.671 361.006 618.066 408.508C590.461 456.01 542.444 498.712 480.545 525.328C418.646 551.944 354.621 557.419 301.155 544.776C247.688 532.134 204.814 501.387 185.117 455.579C165.42 409.771 172.598 357.502 200.203 310C227.808 262.498 275.825 219.795 337.725 193.179C399.624 166.564 463.649 161.089 517.115 173.731C570.581 186.374 613.456 217.121 633.153 262.929Z" stroke="#70856A"/>
@@ -87,10 +92,7 @@ const HomeMenu = observer(() => {
   const store = useContext(StoreContext)
   return (
   <BottomBar>
-    <TextButton onTap={()=> { store.startDrift() }}>Home</TextButton>
-    <TextButton>/</TextButton>
-   <TextButton onTap={()=> { store.mode = 4; }}>About</TextButton>
-    <TextButton>/</TextButton>
+    <TextButton onTap={()=> { store.startDrift() }}>Wander</TextButton>
     <TextButton onTap={()=> { store.mode = 2; }}>History</TextButton>
   </BottomBar>
   )
@@ -123,7 +125,7 @@ const Home = observer(() => {
   return (
     <ScreenWrap>
       {store.started ? <WanderMenu/> : <HomeMenu/>}
-      <DesktopWarning><marquee>Welcome - take a walk. This website is made to be used on your phone, on the go.</marquee></DesktopWarning>
+      <DesktopWarning>Not for desktop consumption. Best on mobile.</DesktopWarning>
       <CardArea>
         <div
           style={{position: 'absolute'}} 

@@ -33,7 +33,7 @@ export const TextArea = styled.div`
   line-height: 38px;
   color: #F5F3E9;
   z-index:10;
-  padding-bottom:120px;
+  padding-bottom:60px;
 `
 
 export const ContentArea = styled.div`
@@ -53,6 +53,18 @@ export const ContentArea = styled.div`
 `
 
 export const DesktopWarning = styled.div`
+  background-color: red;
+  width: 160px;
+  height: 140px;
+  border-radius: 200px;
+  text-align: center;
+  position: fixed;
+  top: 100px;
+  padding: 60px 20px 0px 20px;
+  font-size: 20px;
+  right: -20px;
+  top: -20px;
+  transform: rotate(20deg);
 @media only screen and (max-width: 700px) {
   display:none;
 }
@@ -70,6 +82,8 @@ export const BottomBar = styled.div`
     margin: 5px;
   }
 `
+
+
 export const TextButton = styled(motion.div)`
   color: white;
   font-size: 16px;
