@@ -74,7 +74,7 @@ const About = observer(() => {
          <HomeMenu/>
       <TitleBox>About</TitleBox>
       <TextArea>
-      Wander Prompts are a set of prompts for a slow, observational walk wherever you are. <br/><br/>
+      Wander Prompts are a set of prompts for a slow, observational walk right where you are. <br/><br/>
       They can help you notice things you haven’t seen before, or think about spaces in new ways. 
       <br/><br/>They were created by H. Jaramillo and C. Joerges.
       </TextArea>
@@ -121,7 +121,7 @@ const Home = observer(() => {
     let c = t.charCodeAt(i % t.length) % t.length % rand.length
     return rand[c]
   }
-  let cover = {t:'Wander and wonder wherever you are.', cover: true}
+  let cover = {t:'Wander and wonder right where you are.', cover: true}
   return (
     <ScreenWrap>
       {store.started ? <WanderMenu/> : <HomeMenu/>}

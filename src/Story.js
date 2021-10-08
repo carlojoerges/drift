@@ -129,7 +129,7 @@ const blockBefore = (prs) => {
     const n = prs.length;
     var cities = prs.map((p) => p.c)
     cities = [...new Set(cities)]
-    if (n && cities.length) return `Before that, ${n} people took purposeless walks across ${cities.length} cities.`; else return '';
+    if (n && cities.length) return `Before that, ${n} people took walks across ${cities.length} cities.`; else return '';
 }
 
 const personalStory = (prs) => {
