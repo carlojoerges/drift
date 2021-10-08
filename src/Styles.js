@@ -110,7 +110,7 @@ export const TitleBox = styled.div`
   width: 80px;
   color: black;
   padding: 12px;
-  margin-top: 20%;
+  margin-top: 30vw;
   z-index: 10;
   border-radius: 1px;
   margin-bottom:40px;
