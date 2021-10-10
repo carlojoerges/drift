@@ -9,14 +9,21 @@ const baseItems = [
     {value: 'Philadelphia'},
     {value: 'Mexico City'},
     {value: 'New York'},
+    {value: 'Delhi'},
+    {value: 'São Paulo'},
+    {value: 'Istanbul'},
     {value: 'San Francisco'},
+    {value: 'Manila'},
+    {value: 'Moscow'},
+    {value: 'Tokyo'},
+    {value: 'Beijing'},
     {value: 'Berlin'},
     {value: 'Zurich'},
-    {value: 'Tokyo'},
-    {value: 'Guayaquil'},
+    {value: 'Bogota'},
     {value: 'Hamburg'},
     {value: 'Paris'},
     {value: 'London'},
+    {value: 'Singapore'},
   ];
 
 export const Title = styled.h1`
@@ -27,6 +34,9 @@ export const Title = styled.h1`
   padding: 0px 20px;
   margin: 0px 0px 24px;
   padding-top: 12vw;
+  @media only screen and (min-width: 768px) {
+    padding-top:100px;
+  }
 `
 
 export const SubTitle = styled.h5`

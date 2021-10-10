@@ -21,6 +21,19 @@ export const CardArea = styled.div`
   font-size: 29px;
   line-height: 38px;
   color: #F5F3E9;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+`
+
+export const SwipeUp = styled.div`
+  text-align:center;
+  font-size: 14px;
+  padding-bottom: 24px;
+  opacity:.7;
 `
 
 export const TextArea = styled.div`
@@ -34,6 +47,11 @@ export const TextArea = styled.div`
   color: #F5F3E9;
   z-index:10;
   padding-bottom:60px;
+  @media only screen and (min-width: 768px) {
+    font-size: 56px;
+    line-height: 1.3em;
+    max-width: 950px;
+  }
 `
 
 export const ContentArea = styled.div`
@@ -114,6 +132,9 @@ export const TitleBox = styled.div`
   z-index: 10;
   border-radius: 1px;
   margin-bottom:40px;
+  @media only screen and (min-width: 768px) {
+    margin-top: 10vh;
+  }
 `
 
 export const Circles = styled.div`

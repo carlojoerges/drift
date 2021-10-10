@@ -62,7 +62,7 @@ function StoreProvider(props) {
         if (store.currentDrift) {
             let ps = [];
             store.currentDrift.prompts.map((p)=>{
-                if (p.add) ps.push({c:store.currentDrift.c || "", d:moment(p.added), p:p.p, t:p.t})
+                if (p.add) ps.push({c:store.currentDrift.c || "", d:moment(p.added), p:p.p, t:p.t, y:p.y})
             })
             return personalStory(ps)
         } else return null;

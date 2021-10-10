@@ -5,7 +5,7 @@ import { StoreContext, StoreProvider } from './Store'
 import { City } from './City'
 import { Card } from './Card'
 import { observer } from 'mobx-react'
-import { ScreenWrap, ContentArea, BottomBar, TextButton, Button,Circles, CloseButton, CardArea, TitleBox, TextArea, DesktopWarning } from './Styles'
+import { ScreenWrap, ContentArea, BottomBar, TextButton, Button,Circles, CloseButton, CardArea, TitleBox, TextArea, DesktopWarning, SwipeUp } from './Styles'
 import {
   BrowserRouter as Router,
   Switch,
@@ -50,13 +50,14 @@ const History = observer(() => {
   return (
     <ScreenWrap>
       <HomeMenu/>
-      <TitleBox>History</TitleBox>
+      <TextArea></TextArea>
       <TextArea>
-      Wander Prompts are a set of prompts for a slow, observational walk.<br/><br/>
+      <div style={{"color":"#70856A","display":"inline",}}>Wander Prompts</div> are a set of prompts for a slow, observational walk right where you are.<br/><br/>
       They can guide you to get to know your own city more intimately. Or, just give you an excuse to walk outside.
       </TextArea>
-      <TextArea>For example, {store.story}</TextArea>
-      <TextArea>Wander Prompts were created by H.Jaramillo and C.Joerges.</TextArea>
+      <TextArea><div style={{"color":"#70856A","display":"inline",}}>For example</div>, {store.story}</TextArea>
+      <TextArea>*</TextArea>
+      <TextArea>Wander Prompts were created by H.Jaramillo and C.Joerges. They were inspired by Derives and Yi-Fu Tuan. We recognize not everyone will always feel safe taking a purposeless walk, but hope this serves as a reminder that you absolutely have the right to do so.</TextArea>
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M633.153 262.929C652.85 308.736 645.671 361.006 618.066 408.508C590.461 456.01 542.444 498.712 480.545 525.328C418.646 551.944 354.621 557.419 301.155 544.776C247.688 532.134 204.814 501.387 185.117 455.579C165.42 409.771 172.598 357.502 200.203 310C227.808 262.498 275.825 219.795 337.725 193.179C399.624 166.564 463.649 161.089 517.115 173.731C570.581 186.374 613.456 217.121 633.153 262.929Z" stroke="#70856A"/>
@@ -74,7 +75,7 @@ const About = observer(() => {
          <HomeMenu/>
       <TitleBox>About</TitleBox>
       <TextArea>
-      Wander Prompts are a set of prompts for a slow, observational walk right where you are. <br/><br/>
+      <div style={{"color":"green important!"}}>Wander Prompts </div> are a set of prompts for a slow, observational walk right where you are. <br/><br/>
       They can help you notice things you haven’t seen before, or think about spaces in new ways. 
       <br/><br/>They were created by H. Jaramillo and C. Joerges.
       </TextArea>
@@ -126,6 +127,7 @@ const Home = observer(() => {
     <ScreenWrap>
       {store.started ? <WanderMenu/> : <HomeMenu/>}
       <DesktopWarning>Not for desktop consumption. Best on mobile.</DesktopWarning>
+      {(store.started && store.currentDrift.prompts.length < 3) && <SwipeUp> Swipe up to skip a prompt. </SwipeUp>}
       <CardArea>
         <div
           style={{position: 'absolute'}} 

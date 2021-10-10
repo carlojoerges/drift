@@ -141,7 +141,7 @@ const personalStory = (prs) => {
         if (first.c) blocks.push(`in ${first.c}`)
         blocks.push(`you`)
         prs.map((p,i) => {
-            blocks.push(p.p + (
+            blocks.push(p.y + (
                 i < prs.length-2 
                     ? ','
                     : i == prs.length-1
