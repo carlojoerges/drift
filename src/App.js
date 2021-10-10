@@ -50,6 +50,7 @@ const History = observer(() => {
   return (
     <ScreenWrap>
       <HomeMenu/>
+      <DesktopWarning>Grab your phone and take a walk.</DesktopWarning>
       <TextArea></TextArea>
       <TextArea>
       <div style={{"color":"#70856A","display":"inline",}}>Wander Prompts</div> are a set of prompts for a slow, observational walk right where you are.<br/><br/>
@@ -126,8 +127,8 @@ const Home = observer(() => {
   return (
     <ScreenWrap>
       {store.started ? <WanderMenu/> : <HomeMenu/>}
-      <DesktopWarning>Not for desktop consumption. Best on mobile.</DesktopWarning>
-      {(store.started && store.currentDrift.prompts.length < 3) && <SwipeUp> Swipe up to skip a prompt. </SwipeUp>}
+      <DesktopWarning>Grab your phone and take a walk.</DesktopWarning>
+      {(store.started != 0 && store.currentDrift.prompts.length < 3) && <SwipeUp> Swipe up to skip a prompt. </SwipeUp>}
       <CardArea>
         <div
           style={{position: 'absolute'}} 

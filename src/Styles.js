@@ -73,12 +73,12 @@ export const ContentArea = styled.div`
 export const DesktopWarning = styled.div`
   background-color: red;
   width: 160px;
-  height: 140px;
+  height: 120px;
   border-radius: 200px;
   text-align: center;
   position: fixed;
   top: 100px;
-  padding: 60px 20px 0px 20px;
+  padding: 80px 20px 0px 20px;
   font-size: 20px;
   right: -20px;
   top: -20px;
