@@ -15,7 +15,7 @@ export const CardArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12vh 12vh;
+
   font-style: normal;
   font-weight: 300;
   font-size: 29px;
@@ -32,8 +32,20 @@ export const CardArea = styled.div`
 export const SwipeUp = styled.div`
   text-align:center;
   font-size: 14px;
-  padding-bottom: 24px;
   opacity:.7;
+  position:fixed;
+  width: 100%;
+  top: 15%;
+`
+
+export const SwipeDown = styled.div`
+  text-align:center;
+  font-size: 14px;
+  opacity:.7;
+  position: fixed;
+  width: 100%;
+  bottom: 10%;
+  z-index:10;
 `
 
 export const TextArea = styled.div`
@@ -77,11 +89,10 @@ export const DesktopWarning = styled.div`
   border-radius: 200px;
   text-align: center;
   position: fixed;
-  top: 100px;
+  bottom: -40px;
   padding: 80px 20px 0px 20px;
   font-size: 20px;
   right: -20px;
-  top: -20px;
   transform: rotate(20deg);
 @media only screen and (max-width: 700px) {
   display:none;
@@ -179,7 +190,7 @@ export const Box = styled(animated.div)`
     color: ${props => props.cover ? 'white' : 'black'};
     position: absolute;
     left: -140px;
-    top: -150px;
+    top:-200px;
     display: flex;
     flex: 1 1 0%;
     flex-direction: column;
