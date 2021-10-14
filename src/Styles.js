@@ -29,6 +29,29 @@ export const CardArea = styled.div`
   user-select: none;
 `
 
+export const TextBlock = styled.div`
+ padding: 30px 0px 100px 0px;
+ z-index: 10;
+`
+
+export const YourStory = styled.div`
+max-width: 550px;
+font-style: normal;
+font-weight: 300;
+font-size: 29px;
+line-height: 38px;
+color: #F5F3E9;
+z-index: 10;
+padding-bottom: 60px;
+text-align: center;
+margin: 0px 40px;
+@media only screen and (min-width: 768px) {
+  font-size: 56px;
+  line-height: 1.3em;
+  max-width: 950px;
+}
+`
+
 export const SwipeUp = styled.div`
   text-align:center;
   font-size: 14px;
@@ -139,10 +162,9 @@ export const TitleBox = styled.div`
   width: 80px;
   color: black;
   padding: 12px;
-  margin-top: 30vw;
   z-index: 10;
   border-radius: 1px;
-  margin-bottom:40px;
+  margin:30vw auto 20px auto;
   @media only screen and (min-width: 768px) {
     margin-top: 10vh;
   }
