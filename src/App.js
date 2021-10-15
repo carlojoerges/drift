@@ -5,7 +5,7 @@ import { StoreContext, StoreProvider } from './Store'
 import { City } from './City'
 import { Card } from './Card'
 import { observer } from 'mobx-react'
-import { ScreenWrap, ContentArea, BottomBar, TextButton, Button,Circles, CloseButton, CardArea, TitleBox, TextArea, DesktopWarning, SwipeUp,SwipeDown,TextBlock, YourStory} from './Styles'
+import { ScreenWrap, ContentArea, BottomBar, TextButton, Button,Circles, CloseButton, CardArea, TitleBox, TextArea, DesktopWarning, SwipeUp,SwipeDown,TextBlock, YourStory, YourStoryHeading} from './Styles'
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,10 +30,12 @@ const Recap = observer(() => {
   const store = useContext(StoreContext)
   return (
     <ScreenWrap>
-      <BottomBar><TextButton onTap={()=> { store.startDrift() }} stretch>
+      <BottomBar>
+        <YourStoryHeading>Wander Prompts </YourStoryHeading>
+        <TextButton onTap={()=> { store.startDrift() }} stretch>
          <svg style={{float: 'right'}}  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.5"><path fillRule="evenodd" clipRule="evenodd" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="white"></path></g></svg>
-      </TextButton></BottomBar>
-      <TitleBox>Your walk</TitleBox>
+      </TextButton>
+      </BottomBar>
       <YourStory>{store.currentPersonalStory}</YourStory>
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +60,7 @@ const History = observer(() => {
         </TextArea>
         <TextArea><div style={{"color":"#70856A","display":"inline",}}>For example</div>, {store.story}</TextArea>
         <TextArea>*</TextArea>
-        <TextArea>Wander Prompts were created by H.Jaramillo and C.Joerges. They were inspired by Derives and Yi-Fu Tuan. We recognize not everyone will always feel safe taking a purposeless walk, but hope this serves as a reminder that you absolutely have the right to do so.</TextArea>
+        <TextArea>Wander Prompts were created by H.Jaramillo and developed by C.Joerges. They were inspired by Derives and Yi-Fu Tuan. We recognize not everyone will always feel safe taking a purposeless walk, but hope this serves as a reminder that you absolutely have the right to do so.</TextArea>
       </TextBlock>
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +178,7 @@ const Home = observer(() => {
           />
         </div>
       </CardArea>
-      {(store.started == 0) && <SwipeDown>Swipe down to accept a prompt.</SwipeDown>}
+      {(store.currentDrift.prompts.length < 3) && <SwipeDown>Swipe down to accept a prompt.</SwipeDown>}
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M633.153 262.929C652.85 308.736 645.671 361.006 618.066 408.508C590.461 456.01 542.444 498.712 480.545 525.328C418.646 551.944 354.621 557.419 301.155 544.776C247.688 532.134 204.814 501.387 185.117 455.579C165.42 409.771 172.598 357.502 200.203 310C227.808 262.498 275.825 219.795 337.725 193.179C399.624 166.564 463.649 161.089 517.115 173.731C570.581 186.374 613.456 217.121 633.153 262.929Z" stroke="#70856A"/>

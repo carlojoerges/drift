@@ -51,7 +51,7 @@ const Prompts = [
     {t:'Go where you would have gone when you were 13', p:'went towards where their 13 year old self would have gone', y:'went towards where you would have gone as a 13 year old'},
     {t:'Turn to a crowded area', p:'searched for a crowded area', y:'searched for a crowded area'},
     {t:'Search for repeating patterns', p:'found repeating patterns', y:'found repeating patterns'},
-    {t:'Search for a public building you can walk into', p:'found a public building and walked into it' , y:'found a public building and walked into it'},
+    {t:'Search for a public building you can walk into', p:'walked into a public building' , y:'walked into a public building'},
     {t:'Find a place to watch people come and go', p:'found a place where people come and go', y:'found a place where people come and go'},
     {t:'Find a place to watch people laugh', p:'found a place where people laugh', y:'found a place where people laugh'},
     {t:'Find a place close enough to listen to people', p:'found a place to listen to people', y:'found a place to listen to people'},

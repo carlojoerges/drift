@@ -35,6 +35,8 @@ export const TextBlock = styled.div`
 `
 
 export const YourStory = styled.div`
+padding-left: 20px;
+width: 80%;
 max-width: 550px;
 font-style: normal;
 font-weight: 300;
@@ -43,12 +45,11 @@ line-height: 38px;
 color: #F5F3E9;
 z-index: 10;
 padding-bottom: 60px;
-text-align: center;
-margin: 0px 40px;
 @media only screen and (min-width: 768px) {
   font-size: 56px;
   line-height: 1.3em;
-  max-width: 950px;
+  max-width: 850px;
+  margin: 30vh auto;
 }
 `
 
@@ -58,7 +59,7 @@ export const SwipeUp = styled.div`
   opacity:.7;
   position:fixed;
   width: 100%;
-  top: 15%;
+  top: 13%;
 `
 
 export const SwipeDown = styled.div`
@@ -67,7 +68,7 @@ export const SwipeDown = styled.div`
   opacity:.7;
   position: fixed;
   width: 100%;
-  bottom: 10%;
+  bottom: 13%;
   z-index:10;
 `
 
@@ -83,9 +84,9 @@ export const TextArea = styled.div`
   z-index:10;
   padding-bottom:60px;
   @media only screen and (min-width: 768px) {
-    font-size: 56px;
-    line-height: 1.3em;
-    max-width: 950px;
+    font-size: 54px;
+    line-height: 1.1em;
+    max-width: 900px;
   }
 `
 
@@ -135,6 +136,15 @@ export const BottomBar = styled.div`
   }
 `
 
+
+
+export const YourStoryHeading = styled.div`
+color: white;
+font-size: 16px;
+margin: 5px;
+flex:1;
+color: #70856A;
+`
 
 export const TextButton = styled(motion.div)`
   color: white;
