@@ -35,16 +35,16 @@ export const TextBlock = styled.div`
 `
 
 export const YourStory = styled.div`
-padding-left: 20px;
-width: 80%;
-max-width: 550px;
-font-style: normal;
-font-weight: 300;
 font-size: 29px;
 line-height: 38px;
-color: #F5F3E9;
 z-index: 10;
-padding-bottom: 60px;
+padding: 0px 20px;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: -60px;
+}
 @media only screen and (min-width: 768px) {
   font-size: 56px;
   line-height: 1.3em;
