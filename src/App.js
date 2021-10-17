@@ -131,7 +131,7 @@ const Home = observer(() => {
     <ScreenWrap>
       {store.started ? <WanderMenu/> : <HomeMenu/>}
       <DesktopWarning>Grab your phone and take a walk.</DesktopWarning>
-      {(store.started != 0 && store.currentDrift.prompts.length < 3) && <SwipeUp> Swipe up to skip a prompt. </SwipeUp>}
+      {(store.started != 0 && store.currentDrift.prompts.length < 3) && <SwipeUp> Skip it? Swipe up. </SwipeUp>}
       <CardArea>
         <div
           style={{position: 'absolute'}} 
@@ -178,7 +178,8 @@ const Home = observer(() => {
           />
         </div>
       </CardArea>
-      {(store.currentDrift.prompts.length < 3) && <SwipeDown>Swipe down to accept a prompt.</SwipeDown>}
+      {(store.started == 0 && store.currentDrift.prompts.length < 3) && <SwipeDown>Ready to walk? Swipe down.</SwipeDown>}
+      {(store.started != 0 && store.currentDrift.prompts.length < 3) && <SwipeDown>Tried it? Swipe down.</SwipeDown>}
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M633.153 262.929C652.85 308.736 645.671 361.006 618.066 408.508C590.461 456.01 542.444 498.712 480.545 525.328C418.646 551.944 354.621 557.419 301.155 544.776C247.688 532.134 204.814 501.387 185.117 455.579C165.42 409.771 172.598 357.502 200.203 310C227.808 262.498 275.825 219.795 337.725 193.179C399.624 166.564 463.649 161.089 517.115 173.731C570.581 186.374 613.456 217.121 633.153 262.929Z" stroke="#70856A"/>

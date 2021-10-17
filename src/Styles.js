@@ -68,7 +68,7 @@ export const SwipeDown = styled.div`
   opacity:.7;
   position: fixed;
   width: 100%;
-  bottom: 13%;
+  bottom: 16%;
   z-index:10;
 `
 

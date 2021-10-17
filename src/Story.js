@@ -101,7 +101,7 @@ const templateE = (p,t) => p ? uc(`${t instanceof Function ? t(p) : t}, ${actor(
 const blockJustNow = (prs) => [
     templateC(prs[0], (p) => `just now`), 
     templateD(prs[1], (p) => `${moment(p.d).fromNow()}`), 
-    templateA(prs[2], (p) => `before`)
+    templateA(prs[2], (p) => `before that`)
 ]
 
 const blockToday = (prs) => [
@@ -110,13 +110,13 @@ const blockToday = (prs) => [
     templateE(prs[2], (p) => `while`)
 ]
 const blockThisWeek = (prs) => [
-    templateC(prs[0], (p) => `this past ${moment(p.d).format('dddd')}`), 
+    templateC(prs[0], (p) => `this ${moment(p.d).format('dddd')}`), 
     templateB(prs[1], (p) => `on ${moment(p.d).format('dddd')} in the ${tod(p.d)}`), 
     templateD(prs[2], (p) => `on ${moment(p.d).format('dddd')}`)
 ]
 const blockLastWeek = (prs) => [
-    templateE(prs[0], (p) => `${moment(p.d).format('dddd')} last week`), 
-    templateA(prs[1], (p) => `earlier on ${moment(p.d).format('dddd')}`), 
+    templateE(prs[0], (p) => `last week on ${moment(p.d).format('dddd')}`), 
+    templateA(prs[1], (p) => `before that, on ${moment(p.d).format('dddd')}`), 
     templateB(prs[2], (p) => `on ${moment(p.d).format('dddd')} in the ${tod(p.d)}`)
 ]
 const blockThisYear = (prs) => [
