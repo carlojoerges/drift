@@ -150,6 +150,7 @@ export const TextButton = styled(motion.div)`
   color: white;
   font-size: 16px;
   margin: 5px;
+  opacity:${props => props.home ? '.5' : '1'};
   flex: ${props => props.stretch ? '1' : '0'};
 `
 
