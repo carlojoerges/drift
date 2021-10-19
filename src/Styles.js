@@ -59,7 +59,7 @@ export const SwipeUp = styled.div`
   opacity:.7;
   position:fixed;
   width: 100%;
-  top: 13%;
+  top: 16%;
 `
 
 export const SwipeDown = styled.div`
@@ -68,7 +68,7 @@ export const SwipeDown = styled.div`
   opacity:.7;
   position: fixed;
   width: 100%;
-  bottom: 16%;
+  bottom: 25%;
   z-index:10;
 `
 
@@ -127,7 +127,7 @@ export const BottomBar = styled.div`
   display: flex;
   align-items: center;
   padding: 12px;
-  z-index: 5;
+  z-index: 20;
   a {
     color: white;
     text-decoration: none;
