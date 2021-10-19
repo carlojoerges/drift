@@ -59,7 +59,7 @@ export const SwipeUp = styled.div`
   opacity:.7;
   position:fixed;
   width: 100%;
-  top: 16%;
+  top: 20%;
 `
 
 export const SwipeDown = styled.div`
@@ -68,7 +68,7 @@ export const SwipeDown = styled.div`
   opacity:.7;
   position: fixed;
   width: 100%;
-  bottom: 25%;
+  bottom: 16%;
   z-index:10;
 `
 
