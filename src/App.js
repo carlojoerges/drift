@@ -149,7 +149,7 @@ const Home = observer(() => {
                   p.added = new Date();
                 } else if (Math.abs(d.x) + Math.abs(d.y) < 100) {} else p.add = false;
               }}
-              onUp={()=>{store.saveDrift()}}
+              // onUp={()=>{store.saveDrift()}}
               snap={{
                 x:0, 
                 y:p.added ? 400 : p.add == undefined ? 0 : -800, 
