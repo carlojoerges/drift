@@ -43,7 +43,7 @@ height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-margin-top: -60px;
+overflow: scroll;
 }
 @media only screen and (min-width: 768px) {
   font-size: 56px;
@@ -150,7 +150,6 @@ export const TextButton = styled(motion.div)`
   color: white;
   font-size: 16px;
   margin: 5px;
-  opacity:${props => props.home ? '.5' : '1'};
   flex: ${props => props.stretch ? '1' : '0'};
 `
 

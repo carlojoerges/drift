@@ -94,10 +94,11 @@ const About = observer(() => {
 })
 
 const HomeMenu = observer(() => {
-  const store = useContext(StoreContext)
+  const store = useContext(StoreContext);
+  let active = (store.mode == 0);
   return (
   <BottomBar>
-    <TextButton onTap={()=> { store.mode = 0 }}>Wander</TextButton>
+    <TextButton onTap={()=> { store.mode = 0 }}   style={{"opacity":"${ active ?  '.5' : '1'};"}}>Wander</TextButton>
     <TextButton onTap={()=> { store.mode = 2; }}>History</TextButton>
   </BottomBar>
   )
@@ -123,7 +124,7 @@ const Home = observer(() => {
   const outerRef = useRef();
   const randAngleForString = (t,i=0) => {
     const rand = [-1,3,-2,2,-3,4,-1,-4];
-    let c = t.charCodeAt(i % t.length) % t.length % rand.length
+    let c = t.charCodeAt(i % t.length) % t.length % rand.length;
     return rand[c]
   }
   let cover = {t:'Wander and wonder right where you are.', cover: true}
