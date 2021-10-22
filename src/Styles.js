@@ -151,6 +151,8 @@ export const TextButton = styled(motion.div)`
   font-size: 16px;
   margin: 5px;
   flex: ${props => props.stretch ? '1' : '0'};
+  opacity: ${props => props.active ? 1 : .5};
+  cursor: pointer;
 `
 
 

@@ -95,11 +95,10 @@ const About = observer(() => {
 
 const HomeMenu = observer(() => {
   const store = useContext(StoreContext);
-  let active = (store.mode == 0);
   return (
   <BottomBar>
-    <TextButton onTap={()=> { store.mode = 0 }}   style={{"opacity":"${ active ?  '.5' : '1'};"}}>Wander</TextButton>
-    <TextButton onTap={()=> { store.mode = 2; }}>History</TextButton>
+    <TextButton onTap={()=> { store.mode = 0 }} active={store.mode == 0}   whileHover={{scale: 1.1, transition: { duration: .05},}}  whileTap={{ scale: 0.96 }}>Wander</TextButton>
+    <TextButton onTap={()=> { store.mode = 2; }} active={store.mode == 2} whileHover={{scale: 1.1, transition: { duration: .05},}}  whileTap={{ scale: 0.96 }}>History</TextButton>
   </BottomBar>
   )
 })
