@@ -60,7 +60,7 @@ const History = observer(() => {
         </TextArea>
         <TextArea><div style={{"color":"#70856A","display":"inline",}}>For example</div>, {store.story}</TextArea>
         <TextArea>*</TextArea>
-        <TextArea>Wander Prompts were created by H.Jaramillo and developed by C.Joerges. They were inspired by Derives and Yi-Fu Tuan. We recognize not everyone will always feel safe taking a purposeless walk, but hope this serves as a reminder that you absolutely have the right to do so.</TextArea>
+        <TextArea>Wander Prompts were created by H.Jaramillo and C.Joerges. They were inspired by Derives and Yi-Fu Tuan. We recognize not everyone will always feel safe taking a purposeless walk, but hope this serves as a reminder that you absolutely have the right to do so.</TextArea>
       </TextBlock>
       <Circles>
         <svg width="819" height="708" viewBox="0 0 819 708" fill="none" xmlns="http://www.w3.org/2000/svg">
